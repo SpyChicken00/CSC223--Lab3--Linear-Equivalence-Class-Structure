@@ -1,5 +1,10 @@
 package utilities;
+<<<<<<< HEAD
+=======
 
+//testing github
+
+>>>>>>> deccec7dfd61354b936f00757c47a6c2a25651bd
 /**
 * A singly linked list...yay...
 *
@@ -41,16 +46,6 @@ public class LinkedList <Item> {
 	 * @param item
 	 */
 	private void insert(Node<Item> left, Item item) {
-		/*
-		if (isEmpty()) {
-			_head._next = new Node<Item>(item, _head._next);
-			return;
-		}
-		
-		if (_size == 1) {
-			_head._next._next = new Node<Item>(item, _head._next._next);
-		}
-		*/
 		//add node to right of left
 		left._next = new Node<Item>(item, left._next);
 		//increase size
@@ -223,7 +218,6 @@ public class LinkedList <Item> {
 	 * Return last node in linked list
 	 * @return
 	 */
-	//TODO FIX ME
 	private Node<Item> last() {
 		//check if list is empty
 		//if (isEmpty()) return _head;
@@ -232,7 +226,7 @@ public class LinkedList <Item> {
 		//check if empty
 		if (isEmpty()) return _head;
 		//loop through list
-		for (Node<Item> n = _head._next; n != _tail; n = n._next) {
+		for (Node<Item> n = _head._next; n._next != _tail; n = n._next) {
 			//check if current node's next == _tail
 			if ((n._next == _tail || n == null)) return n;
 		}
@@ -247,11 +241,7 @@ public class LinkedList <Item> {
 	 */
 	public void addToBack(Item element) {
 		//TODO ask if allowed to add null element?
-		//find last element before tail
-		for (Node<Item> n = _head._next; n!= _tail; n = n._next) {
-			if(n._next == _tail) insert(n, element);
-		}
-		//insert(, element);
+		insert(last(), element);
 	}
 	
 	/**

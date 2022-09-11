@@ -1,4 +1,5 @@
 package utilities;
+
 /**
 * A singly linked list...yay...
 *

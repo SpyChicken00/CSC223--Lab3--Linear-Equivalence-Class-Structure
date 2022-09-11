@@ -1,9 +1,4 @@
 package utilities;
-<<<<<<< Updated upstream
-
-//testing github
-
-=======
 /**
 * A singly linked list...yay...
 *
@@ -12,7 +7,7 @@ package utilities;
 * @author Jace Rettig and Sally Stahl
 * @Date 9-11-22
 */
->>>>>>> Stashed changes
+
 public class LinkedList <Item> {
 	
 	//NODE INNER CLASS
@@ -195,7 +190,7 @@ public class LinkedList <Item> {
 	 * @return
 	 */
 	public boolean remove(Item target) {
-		Node prev = _head;
+		Node<Item> prev = _head;
 		//loop through linked list
 		for (Node n = _head._next; n != _tail; n = n._next) {
 			//check if current node's data == target AND node.next != tail
@@ -222,9 +217,8 @@ public class LinkedList <Item> {
 		//if (isEmpty()) return _head;
 		
 		//return _head;
-		
 		//check if empty
-		if (_size == 0) return _head;
+		if (isEmpty()) return _head;
 		//loop through list
 		for (Node<Item> n = _head._next; n._next != _tail; n = n._next) {
 			//check if current node's next == _tail

@@ -11,11 +11,11 @@ class LinkedListTest {
 	public LinkedListTest() {
 		l = new LinkedList<String>();
 		emptyList = new LinkedList<String>();
-		l.addToFront("1");
+		l.addToBack("1");
 		l.addToBack("2");
-		//l.addToBack("3");
-		//l.addToBack("4");
-		//l.addToBack("5");
+		l.addToBack("3");
+		l.addToBack("4");
+		l.addToBack("5");
 	}
 	
 	/**
@@ -41,7 +41,7 @@ class LinkedListTest {
 	public void testAddToFront() {
 		
 		assertEquals("", emptyList.toString());
-		//assertEquals("5 4 3 2 1 ", l.toString());
+		assertEquals("1 2 3 4 5 ", l.toString());
 		//assertTrue(l.contains("1"));
 		//assertTrue(l.contains("2"));
 	}

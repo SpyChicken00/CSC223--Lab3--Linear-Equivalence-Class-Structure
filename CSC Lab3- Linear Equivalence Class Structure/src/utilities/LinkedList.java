@@ -1,15 +1,15 @@
 package utilities;
 
-public class LinkedList <T> {
+public class LinkedList <Item> {
 	//NODE INNER CLASS
-	private class Node<T> {
+	private class Node<Item> {
 		//TODO FINISH
-		protected T data;
-		protected Node <T> next;
+		protected Item data;
+		protected Node <Item> next;
 	}
 	
-	protected Node<T> head;
-	protected Node<T> tail;
+	protected Node<Item> head;
+	protected Node<Item> tail;
 	protected int size;
 	
 	//testing jace branch
@@ -36,31 +36,31 @@ public class LinkedList <T> {
 		return -1;
 	}
 	
-	public void addToFront(T element) {
+	public void addToFront(Item element) {
 		//TODO
 	}
 	
-	public boolean contains(T target) {
+	public boolean contains(Item target) {
 		//TODO use recursion
 		return false;
 	}
 	
-	private Node<T> previous(T target) {
+	private Node<Item> previous(Item target) {
 		//TODO use recursion
 		return;
 	}
 	
-	public boolean remove(T target) {
+	public boolean remove(Item target) {
 		//TODO
 		return false;
 	}
 	
-	private Node<T> last() {
+	private Node<Item> last() {
 		//TODO
 		return;
 	}
 	
-	public void addToBack(T element) {
+	public void addToBack(Item element) {
 		//TODO
 	}
 	
@@ -71,5 +71,10 @@ public class LinkedList <T> {
 	
 	public void reverse() {
 		//TODO use recursion, must be linear time AND space 
+		//recursively break linked list into head value and tail list
+		//once broken down at final node to the beginning of new list
+		//on way back will add items in reverse
+		
+		//will work for linear space?
 	}
 }

@@ -1,9 +1,7 @@
 package utilities;
-<<<<<<< Updated upstream
 
 //testing github
 
-=======
 /**
 * A singly linked list...yay...
 *
@@ -12,7 +10,7 @@ package utilities;
 * @author Jace Rettig and Sally Stahl
 * @Date 9-11-22
 */
->>>>>>> Stashed changes
+
 public class LinkedList <Item> {
 	
 	//NODE INNER CLASS

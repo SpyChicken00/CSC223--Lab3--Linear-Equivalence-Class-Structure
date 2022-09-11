@@ -2,10 +2,17 @@ package utilities;
 import java.util.Comparator;
 public class LinkedEquivalenceClass<T> {
 	
+	protected T _canoncial;
 	
-protected Comparator<T> _comparator;
+	
+	protected Comparator<T> _comparator;
+	
+	
 	
 	protected LinkedList<T> _rest;
+	
+	
+	
 	
 	public LinkedEquivalenceClass(Comparator<T> comparator) {
 		

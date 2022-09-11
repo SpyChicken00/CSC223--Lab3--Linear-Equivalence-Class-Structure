@@ -13,6 +13,8 @@ public class LinkedList <Item> {
 	protected int size;
 	
 	//testing jace branch
+	//test 2 
+	//test3
 	
 	//
 	//ALL ALGORITHMS MUST BE LINEAR TIME OR BETTER, USE RECURSION ;n;

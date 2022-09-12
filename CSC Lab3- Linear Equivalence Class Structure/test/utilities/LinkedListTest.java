@@ -16,6 +16,8 @@ class LinkedListTest {
 		l.addToBack("3");
 		l.addToBack("4");
 		l.addToBack("5");
+		l.addToBack("6");
+		l.addToFront("0");
 	}
 	
 	/**
@@ -39,15 +41,21 @@ class LinkedListTest {
 	
 	@Test
 	public void testAddToFront() {
-		
 		assertEquals("", emptyList.toString());
-		assertEquals("1 2 3 4 5 ", l.toString());
-		//assertTrue(l.contains("1"));
-		//assertTrue(l.contains("2"));
+		assertEquals("0 1 2 3 4 5 6 ", l.toString());
 	}
 	
 	@Test
 	public void testContains() {
+		//TODO fix contains method
+		//assertTrue(l.contains("1"));
+		//assertTrue(l.contains("2"));
+		//assertFalse(l.contains("10"));
+		
+		
+		
+		
+		
 		//does not contain target
 		//does contain target 
 		//list is empty
@@ -59,13 +67,13 @@ class LinkedListTest {
 		//does contain target
 		//list is empty
 	}
-	/*
 	@Test
 	public void testReverse() {
+		//TODO fix reverse method too
 		System.out.println(l.toString());
 		l.reverse();
 		System.out.println(l.toString());
 		
 	}
-	*/
+	
 }

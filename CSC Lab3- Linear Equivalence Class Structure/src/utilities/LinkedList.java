@@ -3,7 +3,7 @@ package utilities;
 /**
 * A singly linked list...yay...
 *
-* <p>Bugs: 
+* <p>Bugs: All the bugs ;n;
 * 
 * @author Jace Rettig and Sally Stahl
 * @Date 9-11-22
@@ -34,6 +34,10 @@ public class LinkedList <Item> {
 		_tail = new Node<Item>(null, null);
 		_size = 0;
 	}
+	
+	
+	
+	
 	//helper methods
 	/**
 	 * inserts a node to the right of input node
@@ -41,16 +45,6 @@ public class LinkedList <Item> {
 	 * @param item
 	 */
 	private void insert(Node<Item> left, Item item) {
-		/*
-		if (isEmpty()) {
-			_head._next = new Node<Item>(item, _head._next);
-			return;
-		}
-		
-		if (_size == 1) {
-			_head._next._next = new Node<Item>(item, _head._next._next);
-		}
-		*/
 		//add node to right of left
 		left._next = new Node<Item>(item, left._next);
 		//increase size
@@ -203,7 +197,7 @@ public class LinkedList <Item> {
 	public boolean remove(Item target) {
 		Node<Item> prev = _head;
 		//loop through linked list
-		for (Node n = _head._next; n != _tail; n = n._next) {
+		for (Node<Item> n = _head._next; n != _tail; n = n._next) {
 			//check if current node's data == target AND node.next != tail
 			if (n._data == target && n._next != _tail) {
 				//set prev node's next to Node n's next
@@ -223,18 +217,15 @@ public class LinkedList <Item> {
 	 * Return last node in linked list
 	 * @return
 	 */
-	//TODO FIX ME
 	private Node<Item> last() {
-		//check if list is empty
-		//if (isEmpty()) return _head;
-		
-		//return _head;
+		Node<Item> curr = _head._next;
 		//check if empty
 		if (isEmpty()) return _head;
-		//loop through list
-		for (Node<Item> n = _head._next; n != _tail; n = n._next) {
-			//check if current node's next == _tail
-			if ((n._next == _tail || n == null)) return n;
+		
+		while (curr != null) {
+			//last node = current node's next == _tail
+			if ((curr._next == _tail)) return curr;
+			curr = curr._next;
 		}
 		
 		return _head;
@@ -246,12 +237,8 @@ public class LinkedList <Item> {
 	 * @param element
 	 */
 	public void addToBack(Item element) {
-		//TODO ask if allowed to add null element?
-		//find last element before tail
-		for (Node<Item> n = _head._next; n!= _tail; n = n._next) {
-			if(n._next == _tail) insert(n, element);
-		}
-		//insert(, element);
+		//insert between last node and tail
+		insert(last(), element, _tail);
 	}
 	
 	/**

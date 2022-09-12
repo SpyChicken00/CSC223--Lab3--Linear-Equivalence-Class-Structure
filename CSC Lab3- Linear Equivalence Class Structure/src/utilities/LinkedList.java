@@ -20,6 +20,7 @@ public class LinkedList <Item> {
 			_data = data;
 			_next = next;
 		}
+		
 	}
 	
 	protected Node<Item> _head;
@@ -109,41 +110,37 @@ public class LinkedList <Item> {
 			//otherwise continue cycling through list
 			curr = curr._next;
 		}
-		
 		//default case
 		return _head;
 	}
 	
 	
-	//TODO wtf is going on with these? need to test and troubleshoot
-	
-	
 	/**
-	 * Helper to get prev node
+	 * Helps get previous node based on input target data
+	 * @param prev
+	 * @param curr
+	 * @param target
+	 * @return
 	 */
 	private Node<Item> previousHelper(Node<Item> prev, Node<Item> curr, Item target) {
+		//if not contained or first item in list (cannot have null prev)
+		if (curr == _tail || _head._next._data == target) {
+			//System.out.println("NULL");
+			return null;
+		}
 		//if contained
-		if (curr._data == target) return prev;
-		//if not contained
-		if (curr == _tail) return null;
+		if (curr._data == target) {
+			//System.out.println("TARGET FOUND: " + prev._data);
+			return prev;
+		}
 		//call prevHelper on next set of nodes
 		previousHelper(prev._next, curr._next, target);
 		return prev;
 	}
 	
-	private void reverseHelper(Node<Item> first, Node<Item> prev, Node<Item> curr) {
-		//if at end of list
-		if (curr._next == _tail) {
-			//curr._next = _head;
-			_head._next = curr;
-			first._next = _tail;
-			return;
-		}
-		reverseHelper(first, prev._next, curr._next);
-		///
-		curr._next = prev;
-		
-	}
+	//TODO replace reverse helper here after finished troubleshooting
+	
+	
 	
 	//
 	//ALL ALGORITHMS MUST BE LINEAR TIME OR BETTER, USE RECURSION ;n;
@@ -235,16 +232,17 @@ public class LinkedList <Item> {
 	 * @param target
 	 * @return
 	 */
-	//TODO check, may or may not work
+	//TODO check, may or may not work, also where to use?
 	private Node<Item> previous(Item target) {
 		//check if list is empty
 		if (isEmpty()) return null;
+		
 		//head and first nodes
 		Node<Item> prev = _head;
 		Node<Item> curr = _head._next;
 		
+		//call previousHelper method to find previous node
 		return previousHelper(prev, curr, target);
-	
 	}
 	
 	/**
@@ -252,26 +250,36 @@ public class LinkedList <Item> {
 	 * @param target
 	 * @return
 	 */
-	//TODO fix, possibly switch to while loop? think through again
 	public boolean remove(Item target) {
+		//track previous and current nodes
 		Node<Item> prev = _head;
-		//loop through linked list
-		for (Node<Item> n = _head._next; n != _tail; n = n._next) {
-			//check if current node's data == target AND node.next != tail
-			if (n._data == target && n._next != _tail) {
-				//set prev node's next to Node n's next
-				prev._next = n._next;
+		Node<Item> curr = _head._next;
+		
+		//check if list is empty
+		if (isEmpty()) return false;
+		
+		while (curr != _tail) {
+			//check if current nodes data matches target 
+			if (curr._data == target) {
+				//set prev node's next to curr node's next to skip/delete node
+				prev._next = curr._next;
 				//decrease size
 				_size = _size - 1;
-				return true;	
+				return true;
 			}
-			//update prev node
+			//update nodes
 			prev = prev._next;
+			curr = curr._next;
 		}
 		//if item does not exist
 		return false;
+		
 	}
 	
+	
+	/**
+	 * Reverses the list
+	 */
 	//TODO FIX; think through again
 	public void reverse() {
 		//TODO use recursion
@@ -285,5 +293,30 @@ public class LinkedList <Item> {
 		Node<Item> first = _head._next;
 
 		reverseHelper(first, prev, curr);
+	}
+	/**
+	 * Helps reverse a linked list
+	 * @param first
+	 * @param prev
+	 * @param curr
+	 */
+	//TODO wtf is going on with this
+	private void reverseHelper(Node<Item> first, Node<Item> prev, Node<Item> curr) {
+		//if at end of list
+		if (curr._next == _tail) {
+			//set last item as first item in reversed list
+			_head._next = curr;
+			curr._next = prev;
+			//first._next = _tail;
+			return;
+		}
+		reverseHelper(first, prev._next, curr._next);
+		//base case to stop? 
+		if (curr.equals(null)) {
+			curr._next = _tail;
+			return;
+		}
+		curr._next = prev;
+		
 	}
 }

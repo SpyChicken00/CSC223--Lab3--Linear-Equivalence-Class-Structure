@@ -20,6 +20,10 @@ class LinkedListTest {
 		l.addToBack("5");
 		l.addToBack("6");
 		l.addToFront("0");
+		l2.addToBack("A");
+		l2.addToBack("B");
+		l2.addToBack("C");
+		l2.addToBack("D");
 	}
 	
 	@Test
@@ -40,6 +44,7 @@ class LinkedListTest {
 		//TODO more insert node tests
 		assertEquals("", emptyList.toString());
 		assertEquals("0 1 2 3 4 5 6 ", l.toString());
+		assertEquals("A B C D ", l2.toString());
 	}
 	
 	@Test
@@ -66,6 +71,35 @@ class LinkedListTest {
 		//try empty
 		//try 1 element
 		//try non-existent element
+		//ensure size adjusts accordingly
+		
+		assertEquals(4, l2.size());
+		assertTrue(l2.remove("D"));
+		assertFalse(l2.contains("D"));
+		assertEquals("A B C ", l2.toString());
+		assertEquals(3, l2.size());
+		
+		//remove non-existant element
+		assertFalse(l2.remove("D"));
+		//remove empty
+		assertFalse(emptyList.remove("empty"));
+		
+		l2.remove("A");
+		assertFalse(l2.contains("A"));
+		assertEquals("B C ", l2.toString());
+		assertEquals(2, l2.size());
+		
+		l2.addToBack("RAWR");
+		l2.addToBack("(*_*)");
+		assertEquals(4, l2.size());
+		l2.remove("B");
+		l2.remove("C");
+		assertFalse(l2.contains("B"));
+		assertFalse(l2.contains("C"));
+		assertEquals("RAWR (*_*) ", l2.toString());
+		assertEquals(2, l2.size());
+		
+		
 	}
 	
 	@Test
@@ -73,10 +107,22 @@ class LinkedListTest {
 		//does not contain target
 		//does contain target
 		//list is empty
+		//tests work fine but not public method
+		/*
+		System.out.println(l.previous("0"));
+		System.out.println(l.previous("1"));
+		System.out.println(l.previous("2"));
+		System.out.println(l.previous("6"));
+		System.out.println(l.previous("7"));
+		System.out.println(l.previous("8"));
+		System.out.println(emptyList.previous("5"));
+		*/
 	}
+	
 	@Test
 	public void testReverse() {
-		//TODO fix reverse
+		//TODO fix reverse, currently only prints last element
+		//also remove print statements before dr.alvin kills us
 		System.out.println(l.toString());
 		l.reverse();
 		System.out.println(l.toString());

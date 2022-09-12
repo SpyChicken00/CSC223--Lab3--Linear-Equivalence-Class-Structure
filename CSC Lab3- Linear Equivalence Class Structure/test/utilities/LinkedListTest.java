@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
 	private LinkedList<String> l;
+	private LinkedList<String> l2;
 	private LinkedList<String> emptyList;
 
 	public LinkedListTest() {
 		l = new LinkedList<String>();
+		l2 = new LinkedList<String>();
 		emptyList = new LinkedList<String>();
 		l.addToBack("1");
 		l.addToBack("2");
@@ -20,9 +22,12 @@ class LinkedListTest {
 		l.addToFront("0");
 	}
 	
-	/**
-	 * Test example- use toString to facilitate testing linkedList
-	 */
+	@Test
+	public void testClear() {
+		emptyList.addToBack("empty");
+		emptyList.clear();
+		assertTrue(emptyList.isEmpty());
+	}
 	
 	@Test
 	public void testIsEmpty() {
@@ -31,34 +36,36 @@ class LinkedListTest {
 	}
 	
 	@Test
-	public void testRemove() {
-		//try to remove last node
-		//try empty
-		//try 1 element
-		//try non-existant element
-	}
-	
-	
-	@Test
-	public void testAddToFront() {
+	public void testAddToFrontAddtoBack() {
+		//TODO more insert node tests
 		assertEquals("", emptyList.toString());
 		assertEquals("0 1 2 3 4 5 6 ", l.toString());
 	}
 	
 	@Test
 	public void testContains() {
-		//TODO fix contains method
-		//assertTrue(l.contains("1"));
-		//assertTrue(l.contains("2"));
-		//assertFalse(l.contains("10"));
-		
-		
-		
-		
-		
 		//does not contain target
 		//does contain target 
 		//list is empty
+		assertTrue(l.contains("1"));
+		assertTrue(l.contains("2"));
+		assertFalse(l.contains("10"));
+		
+		emptyList.clear();
+		emptyList.addToBack("empty");
+		emptyList.clear();
+		assertTrue(emptyList.isEmpty());
+		assertFalse(emptyList.contains("0"));
+		assertFalse(emptyList.contains("1"));
+		assertFalse(emptyList.contains("12"));
+	}
+	
+	@Test
+	public void testRemove() {
+		//try to remove last node
+		//try empty
+		//try 1 element
+		//try non-existent element
 	}
 	
 	@Test
@@ -69,7 +76,7 @@ class LinkedListTest {
 	}
 	@Test
 	public void testReverse() {
-		//TODO fix reverse method too
+		//TODO fix reverse
 		System.out.println(l.toString());
 		l.reverse();
 		System.out.println(l.toString());

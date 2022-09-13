@@ -41,7 +41,7 @@ class LinkedListTest {
 	
 	@Test
 	public void testAddToFrontAddtoBack() {
-		//TODO more insert node tests
+		//TODO more insert node tests?
 		assertEquals("", emptyList.toString());
 		assertEquals("0 1 2 3 4 5 6 ", l.toString());
 		assertEquals("A B C D ", l2.toString());
@@ -79,7 +79,7 @@ class LinkedListTest {
 		assertEquals("A B C ", l2.toString());
 		assertEquals(3, l2.size());
 		
-		//remove non-existant element
+		//remove non-existent element
 		assertFalse(l2.remove("D"));
 		//remove empty
 		assertFalse(emptyList.remove("empty"));
@@ -98,8 +98,6 @@ class LinkedListTest {
 		assertFalse(l2.contains("C"));
 		assertEquals("RAWR (*_*) ", l2.toString());
 		assertEquals(2, l2.size());
-		
-		
 	}
 	
 	@Test
@@ -121,11 +119,24 @@ class LinkedListTest {
 	
 	@Test
 	public void testReverse() {
-		//TODO fix reverse, currently only prints last element
-		//also remove print statements before dr.alvin kills us
-		System.out.println(l.toString());
+		//TODO more tests?
 		l.reverse();
-		System.out.println(l.toString());
+		assertEquals("6 5 4 3 2 1 0 ", l.toString());
+		
+		//check different list
+		l2.reverse();
+		assertEquals("D C B A ", l2.toString());
+		
+		//check 1 and 2 items
+		emptyList.addToBack("Test");
+		emptyList.reverse();
+		assertEquals("Test ", emptyList.toString());
+		
+		emptyList.addToBack("Test2");
+		emptyList.reverse();
+		assertEquals("Test2 Test ", emptyList.toString());
+		emptyList.clear();
+		assertEquals(0, emptyList.size());
 		
 	}
 	

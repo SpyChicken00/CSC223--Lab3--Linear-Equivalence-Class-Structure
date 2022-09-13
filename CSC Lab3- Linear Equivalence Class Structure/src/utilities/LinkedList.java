@@ -3,7 +3,7 @@ package utilities;
 /**
 * A singly linked list...yay...
 *
-* <p>Bugs: All the bugs ;n;
+* <p>Bugs: Does not use previous helper method
 * 
 * @author Jace Rettig and Sally Stahl
 * @Date 9-11-22
@@ -40,19 +40,6 @@ public class LinkedList <Item> {
 	
 	
 	//helper methods
-	/**
-	 * inserts a node to the right of input node
-	 * @param left
-	 * @param item
-	 */
-	//TODO don't use, maybe delete later
-	private void insert(Node<Item> left, Item item) {
-		//add node to right of left
-		left._next = new Node<Item>(item, left._next);
-		//increase size
-		_size++;
-	}
-	
 	/**
 	 * inserts a node between two nodes
 	 * @param left
@@ -114,7 +101,6 @@ public class LinkedList <Item> {
 		return _head;
 	}
 	
-	
 	/**
 	 * Helps get previous node based on input target data
 	 * @param prev
@@ -138,7 +124,33 @@ public class LinkedList <Item> {
 		return prev;
 	}
 	
-	//TODO replace reverse helper here after finished troubleshooting
+	/**
+	 * Helps reverse a linked list
+	 * @param first
+	 * @param prev
+	 * @param curr
+	 */
+	private Node<Item> reverseHelper(Node<Item> curr) {
+		//create recursion stacks till last item in list
+		if (curr._next == _tail) {
+			//point head at last node
+			_head._next = curr;
+			//point last node at tail
+			curr._next = _tail;
+			//return last node
+			return curr;
+		}
+		//return last node of normal list AKA front of reversed list
+		Node<Item > reversedListFront = reverseHelper(curr._next);
+		//set reversed front node's next to the current stack node
+		//aka current node's previous
+		reversedListFront._next = curr;
+		//set current node's next to the tail
+		curr._next = _tail;
+		//return the current reversed list
+		return reversedListFront._next;
+	}
+
 	
 	
 	
@@ -218,21 +230,12 @@ public class LinkedList <Item> {
 		return s.toString();
 	}
 	
-	//
-	//
-	//
-	//TODO fix methods below and respective helper methods above
-	//
-	//
-	//
-	
-	
 	/**
 	 * Return previous node of node with target data
 	 * @param target
 	 * @return
 	 */
-	//TODO check, may or may not work, also where to use?
+	//TODO functions properly, but where to use?
 	private Node<Item> previous(Item target) {
 		//check if list is empty
 		if (isEmpty()) return null;
@@ -276,47 +279,15 @@ public class LinkedList <Item> {
 		
 	}
 	
-	
 	/**
 	 * Reverses the list
 	 */
-	//TODO FIX; think through again
 	public void reverse() {
-		//TODO use recursion
-		//recursively break linked list into head value and tail list
-		//once broken down at final node to the beginning of new list
-		//on way back will add items in reverse
-		
-		
-		Node<Item> prev = _head;
+		//check if list is empty, if it is nothing to reverse
+		if (isEmpty()) return;
+		//first node in list
 		Node<Item> curr = _head._next;
-		Node<Item> first = _head._next;
-
-		reverseHelper(first, prev, curr);
-	}
-	/**
-	 * Helps reverse a linked list
-	 * @param first
-	 * @param prev
-	 * @param curr
-	 */
-	//TODO wtf is going on with this
-	private void reverseHelper(Node<Item> first, Node<Item> prev, Node<Item> curr) {
-		//if at end of list
-		if (curr._next == _tail) {
-			//set last item as first item in reversed list
-			_head._next = curr;
-			curr._next = prev;
-			//first._next = _tail;
-			return;
-		}
-		reverseHelper(first, prev._next, curr._next);
-		//base case to stop? 
-		if (curr.equals(null)) {
-			curr._next = _tail;
-			return;
-		}
-		curr._next = prev;
-		
+		//call reverse helper
+		reverseHelper(curr);
 	}
 }

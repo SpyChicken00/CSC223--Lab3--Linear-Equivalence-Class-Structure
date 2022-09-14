@@ -19,7 +19,8 @@ class LinkedEquivalenceClassTest {
 		
 		Comparator<Integer> c = new Comparator<Integer>() {
 			// All even integers are 'equivalent' // All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y) { return x % 2 == y % 2 ? 0 : 1; }
+			public int compare(Integer x, Integer y) {
+				return x % 2 == y % 2 ? 0 : 1; }
 			};
 			
 			l = new LinkedEquivalenceClass<Integer>(c);	
@@ -27,6 +28,9 @@ class LinkedEquivalenceClassTest {
 
 	@Test
 	void testCanonical() {
+		//TODO- CHECK THAT THE NEW CANONICAL BELONGS
+		
+		
 		//clear the list
 		l.clear();
 		
@@ -144,6 +148,24 @@ class LinkedEquivalenceClassTest {
 		assertEquals(0, l.size());
 	}
 	
+	@Test
+	public void testAdd() {
+		//TODO CHECK WITH ELEMENTS THAT DO NOT BELONG
+	}
+	
+	
+	@Test
+	public void testContains() {
+		
+	}
+	
+	
+	@Test public void testBelongs() {
+		
+	}
+	
+	
+	
 	
 	
 	@Test
@@ -153,18 +175,40 @@ class LinkedEquivalenceClassTest {
 		//check that the list is empty
 		assertTrue(l.isEmpty());
 		
+		//test on an empty list
+		assertFalse(l.remove(1));
+		
+		
+		
 		//add elements to the list
 		l.demoteAndSetCanonical(1);
 		l.demoteAndSetCanonical(2);
 		l.demoteAndSetCanonical(3);
 		l.demoteAndSetCanonical(4);
 		
-		//remove the canonical
+		//remove an element
 		assertTrue(l.remove(1));
 		
+		//remove an element that is the canonical
+		assertTrue(l.remove(4));
 		
+		//remove an element
+		assertTrue(l.remove(2));
 		
+		//remove an element that is impossible to remove
+		//since it is the last element in the list
+		assertFalse(l.remove(3));
 		
+		assertEquals(3, l.canonical());
+		
+		//check that the canonical is still there but the list is empty
+		assertFalse(l.isEmpty());
+		
+		//check the size 
+		assertEquals(1 , l.size());
+		
+		//remove an element that is not in the list
+		assertFalse(l.remove(1));
 		
 	}
 	
@@ -186,11 +230,21 @@ class LinkedEquivalenceClassTest {
 		l.demoteAndSetCanonical(3);
 		l.demoteAndSetCanonical(4);
 		
+		
+		//check that the new canonical is 3
+		assertEquals(4 , l.canonical());
+		
 		//remove the canonical
 		assertTrue(l.removeCanonical());
 		
 		//check that the new canonical is 3
 		assertEquals(3 , l.canonical());
+		
+		//remove the canonical again
+		assertTrue(l.removeCanonical());
+		
+		//check that the new canonical is 3
+		assertEquals(2 , l.canonical());
 		
 		
 		
@@ -201,6 +255,7 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
+		//TODO CHECK THAT THE ELEMENT BEING SET TO THE CANONICAL BELONGS
 		
 		//clear the list
 		l.clear();

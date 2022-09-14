@@ -124,7 +124,7 @@ public class LinkedEquivalenceClass<T> {
 		//add canonical to front of list if its not null
 		if (!(_canonical == null)) _rest.addToFront(_canonical);
 		//set input value to canonical
-		if ((_canonical != element) || (element != null)) {
+		if ((_canonical != element) && (element != null)) {
 			_canonical = element;
 			return true;
 		}

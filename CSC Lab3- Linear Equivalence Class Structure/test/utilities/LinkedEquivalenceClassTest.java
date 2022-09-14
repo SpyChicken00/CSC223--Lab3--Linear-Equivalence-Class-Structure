@@ -6,13 +6,31 @@ import org.junit.jupiter.api.Test;
 
 class LinkedEquivalenceClassTest {
 	
-	private 
-	
 	
 
+	
+	
+	
+	
+	
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void testClear() {
+		
 	}
-
+	
+	@Test
+	public void testClearNonCanonical() {
+		
+	}
+	
+	@Test
+	public void testSize() {
+		
+	}
+	
+	@Test
+	public void testDemoteAndSetCanonical() {
+		
+	}
 }
+

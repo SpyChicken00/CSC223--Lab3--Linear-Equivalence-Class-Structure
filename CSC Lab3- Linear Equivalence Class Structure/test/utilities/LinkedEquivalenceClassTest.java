@@ -6,13 +6,64 @@ import org.junit.jupiter.api.Test;
 
 class LinkedEquivalenceClassTest {
 	
-	private 
-	
-	
+	LinkedEquivalenceClass<Integer> l; 
+
+			
+			
+	public LinkedEquivalenceClassTest() {
+		l = new LinkedEquivalenceClass<Integer>();
+	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testCanonical() {
+		//test that the canonical is empty
+		
+		//test on an empty canonical
+		
+		//tes
+		
+		//test on a canonical element
+		
+		
 	}
+	
+	
+	@Test
+	void testisEmpty() {
+		
+		
+		
+	}
+	
+	
+	
+	
+	@Test
+	void testClear() {
+		
+		
+		
+	}
+	
+	
+	
+	
+	@Test
+	void testclearNonCanonical() {
+		
+		
+		
+	}
+	
+	
+	
+	
+	@Test
+	void testisEmpty() {
+		
+		
+		
+	}
+	
 
 }

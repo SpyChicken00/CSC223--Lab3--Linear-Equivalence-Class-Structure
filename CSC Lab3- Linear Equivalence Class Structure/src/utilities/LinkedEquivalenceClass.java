@@ -75,24 +75,33 @@ public class LinkedEquivalenceClass<T> {
 		//return the size of the rest of the linked list 
 		return _rest.size();
 	}
-
 	
-	
-	
-	
-	
+	/**
+	 * Adds a new item to the Linked Equivalence Class
+	 * @param element
+	 * @return True if successfully added
+	 */
 	public boolean add(T element) {
-		//TODO WIP- review
-		if(_rest.contains(element)) {
-			_rest.addToBack(element);
-			return true;
-		}
-		return false;
+		//TODO test
+		//check if element is null- FALSE
+		if (element == null) return false;
+		//check if already contained- FALSE
+		if (contains(element)) return false;
+		//add element to back of linked list
+		_rest.addToBack(element);
+		return true;
 	}
 	
+	/**
+	 * Checks if the target is contained in the Linked Equivalence Class
+	 * @param target
+	 * @return True if contained
+	 */
 	public boolean contains(T target) {
-		//TODO
+		//TODO test
 		//check if target is canonical or in linked list
+		if (_canonical.equals(target) || _rest.contains(target)) return true;
+		//not contained
 		return false;
 	}
 	

@@ -83,14 +83,39 @@ class LinkedEquivalenceClassTest {
 		//check that everything is empty
 		assertTrue(l.isEmpty());
 		
-		
-		
-		
-		
+
 	}
+	
+	
+	
 	
 	@Test
 	public void testClear() {
+		//test that the list is empty
+		assertTrue(l.isEmpty());
+		
+		//add elements to the list
+		l.demoteAndSetCanonical(1);
+		l.demoteAndSetCanonical(2);
+		l.demoteAndSetCanonical(3);
+		l.demoteAndSetCanonical(4);
+		
+		//test that the list is not empty
+		assertFalse(l.isEmpty());
+		
+		//clear the list 
+		l.clear();
+		
+		//test that the canonical is null
+		assertEquals(null, l.canonical());
+		
+		//check that the list is now empty
+		assertTrue(l.isEmpty());
+		
+		
+		
+		
+		
 		
 	}
 	

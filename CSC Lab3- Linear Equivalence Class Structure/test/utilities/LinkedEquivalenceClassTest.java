@@ -88,11 +88,11 @@ class LinkedEquivalenceClassTest {
 		//check that everything is empty
 		assertTrue(l.isEmpty());
 		
-
+		
+		
+		
+		
 	}
-	
-	
-	
 	
 	@Test
 	public void testClear() {
@@ -128,6 +128,7 @@ class LinkedEquivalenceClassTest {
 	@Test
 	public void testClearNonCanonical() {
 		l.clear();
+		//check that size is 1 after clearing list but not canonical
 		l.demoteAndSetCanonical(2);
 		l.clearNonCanonical();
 		assertEquals(1, l.size());
@@ -137,18 +138,18 @@ class LinkedEquivalenceClassTest {
 	public void testSize() {
 		//add canonical, should be 1 item in linked list
 		l.clear();
-		l.demoteAndSetCanonical(3);
 		//test size of linked equivalence class 
 		assertEquals(1, l.size());
 	}
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
+		//check that asserts false if not possible
 		
-		
-		
-		
-		
+		//check that true 
+		assertTrue(l.demoteAndSetCanonical(3));
+		assertEquals(3, l.canonical());
+
 	}
 
 }

@@ -144,12 +144,33 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
+		
+		//clear the list
+		l.clear();
+		
+		//check that the canonical is null
+		assertFalse(l.demoteAndSetCanonical(null));
+		
+		//add a canonical to the list
+		assertTrue(l.demoteAndSetCanonical(1));
+		
+		//check that the canonical wis 1
+		assertEquals(1 ,l.canonical());
+		
+		
+		
 		//check that asserts false if not possible
 		
 		//check that true 
 		assertTrue(l.demoteAndSetCanonical(3));
 		assertEquals(3, l.canonical());
 
+	}
+	
+	
+	@Test
+	public void testToString() {
+		//TODO
 	}
 
 }

@@ -32,7 +32,6 @@ public class LinkedEquivalenceClass<T> {
 	 * @return the current canonical
 	 */
 	public T canonical() {
-		//establish canonical
 		return _canonical;
 	}
 	
@@ -51,7 +50,6 @@ public class LinkedEquivalenceClass<T> {
 	 * Clears the entire Linked Equivalence Class, including the canonical
 	 */
 	public void clear() {
-		//TODO test
 		//clear list AND clear canonical;
 		_canonical = null;
 		_rest.clear();
@@ -87,6 +85,9 @@ public class LinkedEquivalenceClass<T> {
 		if (element == null) return false;
 		//check if already contained- FALSE
 		if (contains(element)) return false;
+		//check if item belongs before adding
+		if (!(belongs(element))) return false;
+		
 		//add element to back of linked list
 		_rest.addToBack(element);
 		return true;
@@ -106,8 +107,9 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public boolean belongs(T target) {
-		//TODO
-		//uhhhhhhhhhhhhhhh
+		//TODO test
+		//returns whether the target belongs in the equivalence class
+		if (_comparator.compare(_canonical, target) == 0) return true;
 		return false;
 	}
 	
@@ -159,15 +161,17 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if element is different than canonical
 	 */
 	public boolean demoteAndSetCanonical(T element) {
+		//check if element belongs 
+		if (!(belongs(element))) return false;
+		//check if canonical and element are identical or if element is null
+		if (_canonical.equals(element) || element == null) return false;
 		//add canonical to front of list if its not null
 		if (!(_canonical == null)) _rest.addToFront(_canonical);
 		//set input value to canonical
-		if ((_canonical != element) && (element != null)) {
-			_canonical = element;
-			return true;
-		}
-		//if canonical is the same as the element
-		return false;
+		_canonical = element;
+		return true;
+		
+		
 	}
 	
 	/**

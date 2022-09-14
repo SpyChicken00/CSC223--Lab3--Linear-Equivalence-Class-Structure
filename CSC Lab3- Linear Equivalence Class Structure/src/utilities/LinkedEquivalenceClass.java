@@ -17,17 +17,29 @@ public class LinkedEquivalenceClass<T> {
 	protected Comparator<T> _comparator;
 	protected LinkedList<T> _rest;
 	
+	/**
+	 * Creates a new LinkedEquivalence Class Object
+	 * @param comparator
+	 */
 	public LinkedEquivalenceClass(Comparator<T> comparator) {
 		_canonical = null;
 		_comparator = comparator;
 		_rest = new LinkedList<T>();
 	}
 	
+	/**
+	 * Returns the current canonical for the Linked Equivalence Class
+	 * @return the current canonical
+	 */
 	public T canonical() {
 		//establish canonical
 		return _canonical;
 	}
 	
+	/**
+	 * Checks if the Linked Equivalence Class is empty
+	 * @return True if empty
+	 */
 	public boolean isEmpty() {
 		//check that list is empty AND that canonical is null;
 		if (_canonical == null && _rest.isEmpty()) return true;
@@ -35,19 +47,28 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
+	/**
+	 * Clears the entire Linked Equivalence Class, including the canonical
+	 */
 	public void clear() {
 		//TODO test
 		//clear list AND clear canonical;
 		_canonical = null;
 		_rest.clear();
-		
 	}
 	
+	/**
+	 * Clears the Linked Equivalence Class but the canonical does not change
+	 */
 	public void clearNonCanonical() {
 		//clear list but NOT canonical
 		_rest.clear();
 	}
 	
+	/**
+	 * Returns the size of the Linked Equivalence Class, including the canonical
+	 * @return
+	 */
 	public int size() {
 		//if canonical is not null size = linked list size + 1
 		if (!(_canonical == null)) return _rest._size + 1;
@@ -84,6 +105,11 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
+	/**
+	 * Adds previous Canonical to Linked Equivalence Class and sets input to new canonical
+	 * @param element
+	 * @return True if element is different than canonical
+	 */
 	public boolean demoteAndSetCanonical(T element) {
 		//add canonical to front of list if its not null
 		if (!(_canonical == null)) _rest.addToFront(_canonical);
@@ -96,6 +122,9 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
+	/**
+	 * Returns a string representation of the Linked Equivalence Class
+	 */
 	public String toString() {
 		//TODO test
 		//Create a string that represents list/canonical EX: {2 | 4, 6, 8, 12}

@@ -102,17 +102,46 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
+	/**
+	 * Removes the input target from the Linked Equivalence Class
+	 * @param target
+	 * @return True if successfully removed
+	 */
 	public boolean remove(T target) {
-		//TODO 
-		//remove target from just list? or also remove if its the canonical
+		//TODO test
+		//if target item is canonical
+		if (target.equals(_canonical)) return removeCanonical();
+		
+		//check if in list
+		if(_rest.contains(target)) {
+			_rest.remove(target);
+			return true;
+		}
+		
+		//if cannot remove/not in list
 		return false;
 	}
 	
+	/**
+	 * Removes the current canonical and replaces with 
+	 * the first item in the rest of the list
+	 * @return True if successful 
+	 */
 	public boolean removeCanonical() {
-		//TODO
-		//remove completely or remove and add to rest
+		//TODO test
+		//if canonical is null or list is empty
+		if ((_canonical == null) || (_rest.isEmpty())) return false;
 		
-		return false;
+		//get first item in rest
+		T firstItem = _rest.getIndex(0);
+		//remove first item from rest
+		_rest.remove(firstItem);
+		//set as new canonical
+		_canonical = firstItem;
+		//successfully removed
+		return true;
+		
+		
 	}
 	
 	/**

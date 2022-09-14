@@ -290,4 +290,22 @@ public class LinkedList <Item> {
 		//call reverse helper
 		reverseHelper(curr);
 	}
+	
+	/**
+	 * Gets an element at a certain index 
+	 * @param index
+	 * @return item at specified index
+	 */
+	public Item getIndex(int index) {
+		//start at head
+		Node<Item>curr = _head;
+		for (int i = 0; i <= index; i += 1) {
+			//get next node
+			curr = curr._next;
+		}
+		//return index node's data
+		return curr._data;
+		
+		
+	}
 }

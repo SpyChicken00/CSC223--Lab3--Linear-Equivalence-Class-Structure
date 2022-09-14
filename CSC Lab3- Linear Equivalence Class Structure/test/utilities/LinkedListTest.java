@@ -140,4 +140,13 @@ class LinkedListTest {
 		
 	}
 	
+	@Test
+	public void testGetIndex() {
+		assertEquals("0", l.getIndex(0));
+		assertEquals("1", l.getIndex(1));
+		assertEquals("2", l.getIndex(2));
+		assertEquals("6", l.getIndex(6));
+		
+	}
+	
 }

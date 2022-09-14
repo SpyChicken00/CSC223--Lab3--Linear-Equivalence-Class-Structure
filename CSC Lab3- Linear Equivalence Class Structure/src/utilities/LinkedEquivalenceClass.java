@@ -18,20 +18,17 @@ public class LinkedEquivalenceClass<T> {
 	protected LinkedList<T> _rest;
 	
 	public LinkedEquivalenceClass(Comparator<T> comparator) {
-		//TODO what to do for canonical initial value
 		_canonical = null;
 		_comparator = comparator;
 		_rest = new LinkedList<T>();
 	}
 	
 	public T canonical() {
-		//TODO test
 		//establish canonical
 		return _canonical;
 	}
 	
 	public boolean isEmpty() {
-		//TODO test
 		//check that list is empty AND that canonical is null;
 		if (_canonical == null && _rest.isEmpty()) return true;
 		//if not empty
@@ -47,13 +44,11 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public void clearNonCanonical() {
-		//TODO test
 		//clear list but NOT canonical
 		_rest.clear();
 	}
 	
 	public int size() {
-		//TODO test
 		//if canonical is not null size = linked list size + 1
 		if (!(_canonical == null)) return _rest._size + 1;
 		//return the size of the rest of the linked list 
@@ -90,17 +85,14 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public boolean demoteAndSetCanonical(T element) {
-		//TODO test
-		//TODO what order?
 		//add canonical to front of list if its not null
 		if (!(_canonical == null)) _rest.addToFront(_canonical);
 		//set input value to canonical
-		_canonical = element;
-		
-		
-		//TODO question?
-		//what is true false supposed to represent?
-		//successfully adding? if canonical is null or not? 
+		if (_canonical != element) {
+			_canonical = element;
+			return true;
+		}
+		//if canonical is the same as the element
 		return false;
 	}
 	

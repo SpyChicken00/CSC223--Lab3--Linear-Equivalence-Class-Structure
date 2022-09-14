@@ -1,6 +1,9 @@
 package utilities;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,17 +15,39 @@ class LinkedEquivalenceClassTest {
 			
 			
 	public LinkedEquivalenceClassTest() {
-		l = new LinkedEquivalenceClass<Integer>();
+		
+		
+		Comparator<Integer> c = new Comparator<Integer>() {
+			// All even integers are 'equivalent' // All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y) { return x % 2 == y % 2 ? 0 : 1; }
+			};
+			
+			l = new LinkedEquivalenceClass<Integer>(c);	
 	}
 
 	@Test
 	void testCanonical() {
+		
+		assertEquals(null , l.canonical());
+		
+		//test with a canonical that is null
+		l.demoteAndSetCanonical(null);
+		
 		//test that the canonical is empty
+		assertEquals(null , l.canonical());
 		
 		//test on an empty canonical
+		//TODO- change this once demote and set is finalized
+		assertEquals(false , l.demoteAndSetCanonical(1));
 		
+		//check that the canonical is 1
+		assertEquals(1, l.canonical());
 		
 		//test on a canonical element
+		l.demoteAndSetCanonical(2);
+		
+		//check that the new canonical is 2
+		assertEquals(2 , l.canonical());
 		
 		
 	}
@@ -30,6 +55,35 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	void testisEmpty() {
+		
+		//test on an empty canonical and empty rest
+		assertTrue(l.isEmpty());
+		
+		//add a canonical 
+		l.demoteAndSetCanonical(1);
+		
+		//check that the canonical and rest are not empty
+		assertFalse(l.isEmpty());
+		
+		//add element to canonical and have an element in the rest
+		l.demoteAndSetCanonical(2);
+		
+		//check that it is still containing elements
+		assertFalse(l.isEmpty());
+		
+		//clear the list
+		l.clearNonCanonical();
+		
+		//check that there is still an element in canonical
+		assertFalse(l.isEmpty());
+		
+		//clear the whole thing
+		l.clear();
+		
+		//check that everything is empty
+		assertTrue(l.isEmpty());
+		
+		
 		
 		
 		

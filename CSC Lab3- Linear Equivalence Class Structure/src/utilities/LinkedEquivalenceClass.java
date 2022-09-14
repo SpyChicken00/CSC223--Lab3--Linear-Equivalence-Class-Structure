@@ -96,7 +96,7 @@ public class LinkedEquivalenceClass<T> {
 		//TODO question?
 		//what is true false supposed to represent?
 		//successfully adding? if canonical is null or not? 
-		return false
+		return false;
 	}
 	
 	public String toString() {

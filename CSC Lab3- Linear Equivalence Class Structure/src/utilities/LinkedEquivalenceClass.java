@@ -161,17 +161,21 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if element is different than canonical
 	 */
 	public boolean demoteAndSetCanonical(T element) {
-		//check if element belongs 
-		if (!(belongs(element))) return false;
+		//if 1st time setting canonical
+		if (_canonical == null) {
+			_canonical = element;
+			return true;
+		}
 		//check if canonical and element are identical or if element is null
 		if (_canonical.equals(element) || element == null) return false;
-		//add canonical to front of list if its not null
-		if (!(_canonical == null)) _rest.addToFront(_canonical);
+		//check if element belongs 
+		if (!(belongs(element))) return false;
+		
+		//add canonical to front of list
+		_rest.addToFront(_canonical);
 		//set input value to canonical
 		_canonical = element;
 		return true;
-		
-		
 	}
 	
 	/**

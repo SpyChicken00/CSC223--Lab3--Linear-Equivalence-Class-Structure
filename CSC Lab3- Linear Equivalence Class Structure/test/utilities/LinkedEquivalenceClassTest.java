@@ -19,7 +19,8 @@ class LinkedEquivalenceClassTest {
 		
 		Comparator<Integer> c = new Comparator<Integer>() {
 			// All even integers are 'equivalent' // All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y) { return x % 2 == y % 2 ? 0 : 1; }
+			public int compare(Integer x, Integer y) {
+				return x % 2 == y % 2 ? 0 : 1; }
 			};
 			
 			l = new LinkedEquivalenceClass<Integer>(c);	
@@ -27,6 +28,9 @@ class LinkedEquivalenceClassTest {
 
 	@Test
 	void testCanonical() {
+		//TODO- CHECK THAT THE NEW CANONICAL BELONGS
+		
+		
 		//clear the list
 		l.clear();
 		
@@ -144,6 +148,24 @@ class LinkedEquivalenceClassTest {
 		assertEquals(0, l.size());
 	}
 	
+	@Test
+	public void testAdd() {
+		//TODO CHECK WITH ELEMENTS THAT DO NOT BELONG
+	}
+	
+	
+	@Test
+	public void testContains() {
+		
+	}
+	
+	
+	@Test public void testBelongs() {
+		
+	}
+	
+	
+	
 	
 	
 	@Test
@@ -233,6 +255,7 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
+		//TODO CHECK THAT THE ELEMENT BEING SET TO THE CANONICAL BELONGS
 		
 		//clear the list
 		l.clear();

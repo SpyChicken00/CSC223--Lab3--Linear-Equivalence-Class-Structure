@@ -81,6 +81,7 @@ public class LinkedEquivalenceClass<T> {
 	
 	public boolean removeCanonical() {
 		//TODO
+		
 		return false;
 	}
 	

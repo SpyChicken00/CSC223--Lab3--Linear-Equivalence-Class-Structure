@@ -27,7 +27,10 @@ class LinkedEquivalenceClassTest {
 
 	@Test
 	void testCanonical() {
+		//clear the list
+		l.clear();
 		
+		//check that the canonical is null
 		assertEquals(null , l.canonical());
 		
 		//test with a canonical that is null
@@ -38,7 +41,7 @@ class LinkedEquivalenceClassTest {
 		
 		//test on an empty canonical
 		//TODO- change this once demote and set is finalized
-		assertEquals(false , l.demoteAndSetCanonical(1));
+		assertEquals(true , l.demoteAndSetCanonical(1));
 		
 		//check that the canonical is 1
 		assertEquals(1, l.canonical());
@@ -55,6 +58,8 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	void testisEmpty() {
+		//clear the list
+		l.clear();
 		
 		//test on an empty canonical and empty rest
 		assertTrue(l.isEmpty());
@@ -91,6 +96,10 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testClear() {
+		//clear the list
+		l.clear();
+		
+		
 		//test that the list is empty
 		assertTrue(l.isEmpty());
 		
@@ -111,13 +120,10 @@ class LinkedEquivalenceClassTest {
 		
 		//check that the list is now empty
 		assertTrue(l.isEmpty());
-		
-		
-		
-		
-		
+	
 		
 	}
+	
 	
 	@Test
 	public void testClearNonCanonical() {
@@ -138,6 +144,10 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
+		
+		
+		
+		
 		
 	}
 

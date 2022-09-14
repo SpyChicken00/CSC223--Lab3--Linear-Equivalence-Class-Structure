@@ -147,6 +147,59 @@ class LinkedEquivalenceClassTest {
 	
 	
 	@Test
+	public void testRemove() {
+		//clear the list
+		l.clear();
+		//check that the list is empty
+		assertTrue(l.isEmpty());
+		
+		//add elements to the list
+		l.demoteAndSetCanonical(1);
+		l.demoteAndSetCanonical(2);
+		l.demoteAndSetCanonical(3);
+		l.demoteAndSetCanonical(4);
+		
+		//remove the canonical
+		assertTrue(l.remove(1));
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	@Test
+	public void testRemoveCanonical() {
+		//clear the list
+		l.clear();
+		//check that the list is empty
+		assertTrue(l.isEmpty());
+		
+		//add elements to the list
+		l.demoteAndSetCanonical(1);
+		l.demoteAndSetCanonical(2);
+		l.demoteAndSetCanonical(3);
+		l.demoteAndSetCanonical(4);
+		
+		//remove the canonical
+		assertTrue(l.removeCanonical());
+		
+		//check that the new canonical is 3
+		assertEquals(3 , l.canonical());
+		
+		
+		
+	}
+	
+	
+	
+	
+	@Test
 	public void testDemoteAndSetCanonical() {
 		
 		//clear the list

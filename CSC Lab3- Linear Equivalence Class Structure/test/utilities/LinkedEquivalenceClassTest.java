@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class LinkedEquivalenceClassTest {
 	
+
 	LinkedEquivalenceClass<Integer> l; 
 
 			
@@ -20,7 +21,6 @@ class LinkedEquivalenceClassTest {
 		
 		//test on an empty canonical
 		
-		//tes
 		
 		//test on a canonical element
 		
@@ -36,34 +36,25 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
-	
-	
 	@Test
-	void testClear() {
-		
-		
+	public void testClear() {
 		
 	}
 	
-	
-	
-	
 	@Test
-	void testclearNonCanonical() {
-		
-		
+	public void testClearNonCanonical() {
 		
 	}
 	
-	
-	
-	
 	@Test
-	void testisEmpty() {
-		
-		
+	public void testSize() {
 		
 	}
 	
+	@Test
+	public void testDemoteAndSetCanonical() {
+		
+	}
 
 }
+

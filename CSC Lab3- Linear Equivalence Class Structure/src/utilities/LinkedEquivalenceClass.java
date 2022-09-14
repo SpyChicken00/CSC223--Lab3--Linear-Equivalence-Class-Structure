@@ -1,11 +1,16 @@
 package utilities;
 import java.util.Comparator;
 /**
- * FIX ME
- * @author Jace
- *
- * @param <T>
- */
+ * A LinkedEquivalence Class, determines if two objects
+ * can be compared based on a specified criteria or something 
+ * idk fix this later
+ * 
+ * <p>Bugs: ???
+* 
+* @author Jace Rettig and Sally Stahl
+* @Date 9-12-22
+* @param <T>
+*/
 public class LinkedEquivalenceClass<T> {
 
 	protected T _canonical;
@@ -56,7 +61,7 @@ public class LinkedEquivalenceClass<T> {
 	}
 
 	public boolean add(T element) {
-		//TODO WIP
+		//TODO WIP- review
 		if(_rest.contains(element)) {
 			_rest.addToBack(element);
 			return true;
@@ -96,12 +101,16 @@ public class LinkedEquivalenceClass<T> {
 		//TODO question?
 		//what is true false supposed to represent?
 		//successfully adding? if canonical is null or not? 
-		return false
+		return false;
 	}
 	
 	public String toString() {
-		//TODO
-		return "FINISH ME";
+		//TODO test
+		//Create a string that represents list/canonical EX: {2 | 4, 6, 8, 12}
+		StringBuilder s = new StringBuilder();
+		s.append("{" + _canonical + " | ");
+		s.append(_rest.toString() + "}");
+		return s.toString();
 	}
 }
 

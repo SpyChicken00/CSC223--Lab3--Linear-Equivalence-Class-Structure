@@ -35,7 +35,6 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
-	
 	@Test
 	public void testClear() {
 		

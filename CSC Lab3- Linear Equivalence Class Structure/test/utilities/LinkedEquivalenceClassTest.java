@@ -287,10 +287,19 @@ class LinkedEquivalenceClassTest {
 
 	}
 	
-	
 	@Test
 	public void testToString() {
-		//TODO
+		//set initial canonical
+		l.demoteAndSetCanonical(2);
+		l.add(4);
+		l.add(6);
+		l.add(8);
+		l.add(10);
+		//check string
+		assertEquals("{2 | 4 6 8 10 }", l.toString());
+		l.demoteAndSetCanonical(4);
+		//duplicate element removed when canonical switched
+		assertEquals("{4 | 2 6 8 10 }", l.toString());
 	}
 
 }

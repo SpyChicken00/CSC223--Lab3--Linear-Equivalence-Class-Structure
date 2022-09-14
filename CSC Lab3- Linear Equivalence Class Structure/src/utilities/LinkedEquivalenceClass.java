@@ -5,7 +5,10 @@ import java.util.Comparator;
  * can be compared based on a specified criteria or something 
  * idk fix this later
  * 
- * <p>Bugs: ???
+ * <p>Bugs: 
+ * DemoteAndSetCanonical: When Initially setting the canonical, if the user incorrectly 
+ * assigns the initial value wrong then all comparisons will be false
+ * After the 1st time set will check if new canonical belongs before adding
 * 
 * @author Jace Rettig and Sally Stahl
 * @Date 9-12-22
@@ -161,15 +164,18 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if element is different than canonical
 	 */
 	public boolean demoteAndSetCanonical(T element) {
-		//if 1st time setting canonical
+		//if 1st time setting canonical//
 		if (_canonical == null) {
 			_canonical = element;
 			return true;
 		}
+		//resetting canonical//
 		//check if canonical and element are identical or if element is null
 		if (_canonical.equals(element) || element == null) return false;
-		//check if element belongs 
+		//check if element belongs in list
 		if (!(belongs(element))) return false;
+		//check if element is already contained , if so remove element
+		if (contains(element)) _rest.remove(element);
 		
 		//add canonical to front of list
 		_rest.addToFront(_canonical);
@@ -182,7 +188,6 @@ public class LinkedEquivalenceClass<T> {
 	 * Returns a string representation of the Linked Equivalence Class
 	 */
 	public String toString() {
-		//TODO test
 		//Create a string that represents list/canonical EX: {2 | 4, 6, 8, 12}
 		StringBuilder s = new StringBuilder();
 		s.append("{" + _canonical + " | ");

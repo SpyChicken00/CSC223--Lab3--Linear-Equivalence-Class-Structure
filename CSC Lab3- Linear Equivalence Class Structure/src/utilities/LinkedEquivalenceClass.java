@@ -76,6 +76,11 @@ public class LinkedEquivalenceClass<T> {
 		return _rest.size();
 	}
 
+	
+	
+	
+	
+	
 	public boolean add(T element) {
 		//TODO WIP- review
 		if(_rest.contains(element)) {
@@ -87,21 +92,25 @@ public class LinkedEquivalenceClass<T> {
 	
 	public boolean contains(T target) {
 		//TODO
+		//check if target is canonical or in linked list
 		return false;
 	}
 	
 	public boolean belongs(T target) {
 		//TODO
+		//uhhhhhhhhhhhhhhh
 		return false;
 	}
 	
 	public boolean remove(T target) {
 		//TODO 
+		//remove target from just list? or also remove if its the canonical
 		return false;
 	}
 	
 	public boolean removeCanonical() {
 		//TODO
+		//remove completely or remove and add to rest
 		
 		return false;
 	}
@@ -115,7 +124,7 @@ public class LinkedEquivalenceClass<T> {
 		//add canonical to front of list if its not null
 		if (!(_canonical == null)) _rest.addToFront(_canonical);
 		//set input value to canonical
-		if (_canonical != element) {
+		if ((_canonical != element) || (element != null)) {
 			_canonical = element;
 			return true;
 		}

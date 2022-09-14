@@ -139,7 +139,7 @@ class LinkedEquivalenceClassTest {
 		//add canonical, should be 1 item in linked list
 		l.clear();
 		//test size of linked equivalence class 
-		assertEquals(1, l.size());
+		assertEquals(0, l.size());
 	}
 	
 	@Test

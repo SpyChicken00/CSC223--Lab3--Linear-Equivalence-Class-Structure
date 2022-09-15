@@ -56,6 +56,12 @@ class LinkedEquivalenceClassTest {
 		//check that the new canonical is 2
 		assertEquals(4 , l.canonical());
 		
+		//check a canonical that does not belong
+		assertFalse(l.demoteAndSetCanonical(3));
+		
+		//check that the canonical is still what is was before
+		assertEquals(4 , l.canonical());
+		
 		
 	}
 	
@@ -131,10 +137,27 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testClearNonCanonical() {
+		//clear the list and the canonical
 		l.clear();
-		//check that size is 1 after clearing list but not canonical
+		
+		//add an element to the canonical
 		l.demoteAndSetCanonical(2);
+		
+		//check the size of the list
+		assertEquals(1 , l.size());
+		
+		//add elements to the rest of the list
+		l.add(4);
+		l.add(6);
+		l.add(8);
+		
+		//check the size of the list
+		assertEquals(4 , l.size());
+		
+		//clear the non canonical elements
 		l.clearNonCanonical();
+		
+		//ensure the size is back to 1
 		assertEquals(1, l.size());
 	}
 	
@@ -146,21 +169,123 @@ class LinkedEquivalenceClassTest {
 		l.clear();
 		//test size of linked equivalence class 
 		assertEquals(0, l.size());
+		
+		//test the size with one element on the canonical
+		assertTrue(l.demoteAndSetCanonical(2));
+		
+		//test the size
+		assertEquals(1 , l.size());
+		
+		//add more elements to the list
+		assertTrue(l.add(4));
+		assertTrue(l.add(6));
+		
+		//test the size
+		assertEquals(3 , l.size());
+		
+		//clear the list and not the canonical
+		l.clearNonCanonical();
+		
+		//check the size
+		assertEquals(1 , l.size());
+		
+		//clear the rest and the canonical
+		l.clear();
+		
+		//check the size again
+		assertEquals(0 , l.size());
+		
+		
+		
 	}
 	
 	@Test
 	public void testAdd() {
-		//TODO CHECK WITH ELEMENTS THAT DO NOT BELONG
+		
+		//add an element to the canonical 
+		assertTrue(l.demoteAndSetCanonical(2));
+		
+		//add elements to the rest of the list
+		assertTrue(l.add(4));
+		assertTrue(l.add(6));
+		
+		//add the element that is value of the canonical
+		assertFalse(l.add(2));
+		
+		//test an element that does not belong to the set
+		assertFalse(l.add(3));
+		
+		//add an element that is null
+		assertFalse(l.add(null));
+		
 	}
 	
 	
 	@Test
 	public void testContains() {
+		//test on an empty set
+		//assertFalse(l.contains(1));
+		
+		//add elements to the set
+		l.demoteAndSetCanonical(2);
+		l.add(4);
+		l.add(6);
+		l.add(8);
+		
+		//verify that the size has increased
+		//assertEquals(4 , l.size());
+		
+		//check that the list contains the element
+		assertTrue(l.contains(4));
+		
+		//add another element to the list
+		assertTrue(l.contains(6));
+		
+		//verify that the lsit contains the canonical element
+		assertTrue(l.contains(2));
+		
+		//clear the list
+		l.clearNonCanonical();
+		
+		//verify that the list contains the canonical
+		assertTrue(l.contains(2));
+		
+		//clear the canonical element
+		l.clear();
+		
+		//check that the element is no longer contained within the set
+		assertFalse(l.contains(2));
+		
+		//test on a null element
+		assertTrue(l.contains(null));
+		
 		
 	}
 	
 	
 	@Test public void testBelongs() {
+		
+		//add a canonical element
+		l.demoteAndSetCanonical(2);
+		
+		//test on an element that doesn't belong
+		assertFalse(l.belongs(3));
+		
+		//test on an element that belongs
+		assertTrue(l.belongs(4));
+		
+		//test on an element that is the canonical
+		assertTrue(l.belongs(2));
+		
+		//change the canonical
+		l.demoteAndSetCanonical(4);
+		
+		//test on an element that belongs
+		assertTrue(l.belongs(8));
+		
+		//test on an element that doesnt belong
+		assertFalse(l.belongs(9));
+		
 	
 		
 	}
@@ -178,7 +303,6 @@ class LinkedEquivalenceClassTest {
 		
 		//test on an empty list
 		assertFalse(l.remove(2));
-		
 		
 		
 		//add elements to the list
@@ -234,7 +358,6 @@ class LinkedEquivalenceClassTest {
 		l.add(6);
 		l.add(8);
 		
-		
 		//check that the new canonical is 3
 		assertEquals(2 , l.canonical());
 		
@@ -272,9 +395,6 @@ class LinkedEquivalenceClassTest {
 		//clear the list
 		l.clear();
 		
-		//check that the canonical is null
-		assertTrue(l.demoteAndSetCanonical(null));
-		
 		//ensure the size is 0 and everything is empty
 		assertEquals( 0, l.size());
 		
@@ -299,6 +419,7 @@ class LinkedEquivalenceClassTest {
 		
 		//try to add a canonical that is null
 		assertFalse(l.demoteAndSetCanonical(null));
+		
 		
 	
 		

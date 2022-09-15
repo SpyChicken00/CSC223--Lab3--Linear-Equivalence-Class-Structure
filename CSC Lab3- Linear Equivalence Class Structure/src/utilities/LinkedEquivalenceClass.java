@@ -83,7 +83,6 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if successfully added
 	 */
 	public boolean add(T element) {
-		//TODO test
 		//check if element is null- FALSE
 		if (element == null) return false;
 		//check if already contained- FALSE
@@ -104,7 +103,7 @@ public class LinkedEquivalenceClass<T> {
 	public boolean contains(T target) {
 		//TODO test
 		//check if target is canonical or in linked list
-		if (_canonical.equals(target) || _rest.contains(target)) return true;
+		if (_canonical == target || _rest.contains(target)) return true;
 		//not contained
 		return false;
 	}
@@ -122,7 +121,6 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if successfully removed
 	 */
 	public boolean remove(T target) {
-		//TODO test
 		//if target item is canonical
 		if (target.equals(_canonical)) return removeCanonical();
 		
@@ -164,8 +162,9 @@ public class LinkedEquivalenceClass<T> {
 	 * @return True if element is different than canonical
 	 */
 	public boolean demoteAndSetCanonical(T element) {
+		
 		//if 1st time setting canonical//
-		if (_canonical == null) {
+		if (_canonical == null ) {
 			_canonical = element;
 			return true;
 		}

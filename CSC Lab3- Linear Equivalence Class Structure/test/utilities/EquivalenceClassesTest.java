@@ -56,12 +56,10 @@ class EquivalenceClassesTest {
 	@Test
 	void testAdd() {
 
-		//add elements to the linker equivalence classes
+		//add elements to the linked equivalence classes
 		addElements(_test1 , 2, 4, 6);
 		addElements(_test2 , 4, 8, 12);
 		addElements(_test3 , 6, 12 , 18);
-
-
 
 		//test with a null element
 		assertFalse(_ec.add(null));
@@ -77,6 +75,8 @@ class EquivalenceClassesTest {
 
 		//check that new element is contains
 		assertTrue(_ec.contains(_test2));
+		
+		//add an element that already exists in the class
 
 
 
@@ -87,7 +87,7 @@ class EquivalenceClassesTest {
 	@Test
 	void testContains() {
 
-		//add elements to the linker equivalence classes
+		//add elements to the linked equivalence classes
 		addElements(_test1 , 2, 4, 6);
 		addElements(_test2 , 4, 8, 12);
 		addElements(_test3 , 6, 12 , 18);
@@ -118,7 +118,7 @@ class EquivalenceClassesTest {
 	@Test
 	void testSize() {
 
-		//add elements to the linker equivalence classes
+		//add elements to the linked equivalence classes
 		addElements(_test1 , 2, 4, 6);
 		addElements(_test2 , 4, 8, 12);
 		addElements(_test3 , 6, 12 , 18);

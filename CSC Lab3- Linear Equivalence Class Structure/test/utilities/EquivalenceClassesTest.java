@@ -52,7 +52,7 @@ class EquivalenceClassesTest {
 		assertTrue(_ec.add(4));
 
 		//check that new element is contains
-		assertTrue(_ec.contains(_4));
+		assertTrue(_ec.contains(4));
 
 		//add an element that already exists in the class
 		assertFalse(_ec.add(2));

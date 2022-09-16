@@ -16,7 +16,7 @@ import java.util.List;
 public class EquivalenceClasses<T> {
 	protected Comparator<T> _comparator;
 
-	protected List<LinkedEquivalenceClass<T>> _rest;
+	protected List<LinkedEquivalenceClass<T>> _classes;
 
 	/**
 	 * Creates a new arraylist to store equivalence classes
@@ -24,7 +24,7 @@ public class EquivalenceClasses<T> {
 	 */
 	public EquivalenceClasses(Comparator<T> comparator) {
 		_comparator = comparator;
-		_rest = new ArrayList<LinkedEquivalenceClass<T>>();
+		_classes = new ArrayList<LinkedEquivalenceClass<T>>();
 	}
 
 	/**
@@ -38,11 +38,11 @@ public class EquivalenceClasses<T> {
 		//check if element null
 		if (element == null) return false;
 		//check if class already contained
-		if (_rest.contains(element)) return false;
+		if (_classes.contains(element)) return false;
 		
 		//add element equivalence class to the arrayList
 		//TODO how to add/cast type?
-		_rest.add((LinkedEquivalenceClass<T>) element);
+		_classes.add((LinkedEquivalenceClass<T>) element);
 		return true;
 	}
 
@@ -55,8 +55,12 @@ public class EquivalenceClasses<T> {
 		//TODO test
 		//check if target is null
 		if (target == null) return false;
-		//check if contains target equivalence class
-		return _rest.contains(target);
+		//check each class in classes and see if contains target
+		for (LinkedEquivalenceClass<T> c:_classes) {
+			if (c.contains(target)) return true;
+		}
+		
+		return false;
 	}
 	
 	/**
@@ -66,7 +70,7 @@ public class EquivalenceClasses<T> {
 	public int size() {
 		//TODO test
 		//check the size of the arraylist
-		return _rest.size();
+		return _classes.size();
 	}
 
 	/**
@@ -74,10 +78,8 @@ public class EquivalenceClasses<T> {
 	 * @return
 	 */
 	public int numClasses() {
-		//TODO same as size then?
-		
 		//return size of list, list should not have duplicates
-		return _rest.size();
+		return _classes.size();
 	}
 
 	/**
@@ -90,9 +92,9 @@ public class EquivalenceClasses<T> {
 		//check if element is null
 		if (element == null) return -1;
 		//index location of element
-		for (int i = 0; i < _rest.size(); i++) {
+		for (int i = 0; i < _classes.size(); i++) {
 			//check if target is equal to current item
-			if (_rest.get(i).equals(element)) return i;
+			if (_classes.get(i).equals(element)) return i;
 		}
 		//not contained
 		return -1;
@@ -105,9 +107,9 @@ public class EquivalenceClasses<T> {
 	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		for (int i = 0; i < _rest.size(); i++) {
+		for (int i = 0; i < _classes.size(); i++) {
 			//add each item in arrayList to string on a new line
-			s.append(_rest.get(i).toString() + "\n");
+			s.append(_classes.get(i).toString() + "\n");
 		}
 		//String representation of all the classes in arrayList 
 		return s.toString();

@@ -18,12 +18,21 @@ public class EquivalenceClasses<T> {
 
 	protected List<LinkedEquivalenceClass<T>> _rest;
 
+	/**
+	 * Creates a new arraylist to store equivalence classes
+	 * @param comparator
+	 */
 	public EquivalenceClasses(Comparator<T> comparator) {
-
 		_comparator = comparator;
 		_rest = new ArrayList<LinkedEquivalenceClass<T>>();
 	}
 
+	/**
+	 * Adds a new class to the arrayList,
+	 * Will not allow duplicate or null classes
+	 * @param element
+	 * @return true if addition was successful
+	 */
 	public boolean add(T element) {
 		//TODO
 		//check if element null
@@ -37,52 +46,71 @@ public class EquivalenceClasses<T> {
 		return true;
 	}
 
+	/**
+	 * Checks if the arrayList contains the input target
+	 * @param target
+	 * @return True if containment
+	 */
 	public boolean contains(T target) {
 		//TODO test
 		//check if target is null
 		if (target == null) return false;
 		//check if contains target equivalence class
-		for (int i = 0; i < _rest.size(); i++) {
-			//check if target is equal to current item
-			if (_rest.get(i).equals(target)) return true;
-		}
-		//target not contained
-		return false;
+		return _rest.contains(target);
 	}
-
-
+	
+	/**
+	 * Returns the number of equivalence classes contained in the list
+	 * @return and integer 
+	 */
 	public int size() {
 		//TODO test
 		//check the size of the arraylist
 		return _rest.size();
 	}
 
+	/**
+	 * Returns the number of classes contained in the list
+	 * @return
+	 */
 	public int numClasses() {
-		//TODO fix if cannot have duplicates? same as size then?
-		//check for number of equivalence classes (excluding duplicates)
-		/*
-		//create a set
-		Set<LinkedEquivalenceClass<T>> classSet = new HashSet<LinkedEquivalenceClass<T>>();
-		//loop through array list and add all items to set
-		for (int i = 0; i < _rest.size(); i++) {
-			classSet.add(_rest.get(i));
-		}
-		//return set size
-		return classSet.size();
-		*/
+		//TODO same as size then?
+		
 		//return size of list, list should not have duplicates
 		return _rest.size();
 	}
 
+	/**
+	 * Returns the index a particular class is located at; Returns -1 if
+	 * the input is null or the class is not contained in the list
+	 * @param element
+	 * @return index of particular class
+	 */
 	protected int indexOfClass(T element) {
-		//TODO
-		//index value that element class is located at in arraylist
+		//TODO test
+		//check if element is null
+		if (element == null) return -1;
+		//index location of element
+		for (int i = 0; i < _rest.size(); i++) {
+			//check if target is equal to current item
+			if (_rest.get(i).equals(element)) return i;
+		}
+		//not contained
 		return -1;
 	}
 
+	/**
+	 * Returns a String representation of the contents of the arrayList
+	 * @return String 
+	 */
 	public String toString() {
-		//TODO
+		//TODO test
+		StringBuilder s = new StringBuilder();
+		for (int i = 0; i < _rest.size(); i++) {
+			//add each item in arrayList to string on a new line
+			s.append(_rest.get(i).toString() + "\n");
+		}
 		//String representation of all the classes in arrayList 
-		return "ERROR";
+		return s.toString();
 	}
 }

@@ -100,11 +100,11 @@ public class EquivalenceClasses<T> {
 	}
 
 	/**
-	 * Returns a String representation of the contents of the arrayList
+	 * Returns a String representation of the contents of
+	 * each Linked Equivalence Class the arrayList
 	 * @return String 
 	 */
 	public String toString() {
-		//TODO test
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < _rest.size(); i++) {
 			//add each item in arrayList to string on a new line
@@ -113,4 +113,6 @@ public class EquivalenceClasses<T> {
 		//String representation of all the classes in arrayList 
 		return s.toString();
 	}
+	
+
 }

@@ -151,18 +151,32 @@ class EquivalenceClassesTest {
 
 	@Test
 	void testNumClasses() {
-
+		//check 0 num of classes
+		//try to add duplicate classes and check size
+		//check random num of classes
+		_ec.add(_test1);
+		_ec.add(_test2);
+		assertEquals(2, _ec.numClasses());
 	}
 
 
 	@Test
 	void testIndexOfClasses() {
-
+		
+		_ec.add(_test1);
+		_ec.add(_test2);
+		assertEquals(0, _ec.indexOfClass(_test1));
+		assertEquals(1, _ec.indexOfClass(_test2));
 	}
 
 	@Test
 	void testToString() {
-
+		_ec.add(_test1);
+		_ec.add(_test2);
+		//test that output is expected
+		System.out.println(_ec.toString());
+		assertEquals("{null | }\n{null | }\n", _ec.toString());
 	}
+	
 
 }

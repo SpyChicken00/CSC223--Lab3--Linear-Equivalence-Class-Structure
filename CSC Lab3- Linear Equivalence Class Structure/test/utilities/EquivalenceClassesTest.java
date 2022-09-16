@@ -8,75 +8,54 @@ import org.junit.jupiter.api.Test;
 
 class EquivalenceClassesTest {
 
-	EquivalenceClasses<LinkedEquivalenceClass<Integer>> _ec;
+	EquivalenceClasses<Integer> _ec;
 
-
-	LinkedEquivalenceClass<Integer> _test1;
-	LinkedEquivalenceClass<Integer> _test2;
-	LinkedEquivalenceClass<Integer> _test3;
 
 
 	public EquivalenceClassesTest(){
 
-		Comparator<LinkedEquivalenceClass<Integer>> c = new Comparator<LinkedEquivalenceClass<Integer>>() {
-			// All even integers are 'equivalent' // All odd integers are 'equivalent'
-			public int compare(LinkedEquivalenceClass<Integer> x, LinkedEquivalenceClass<Integer> y) {
-				return x.equals(y) ? 0 : 1; }
-		};
-
-		_ec = new EquivalenceClasses<LinkedEquivalenceClass<Integer>>(c);
-
-
 		//create the test equivalence classes
-		Comparator<Integer> c1 = new Comparator<Integer>() {
+		Comparator<Integer> c = new Comparator<Integer>() {
 			// All even integers are 'equivalent' // All odd integers are 'equivalent'
 			public int compare(Integer x, Integer y) {
 				return x % 2 == y % 2 ? 0 : 1; }
 		};
 
-
-
-		_test1 = new LinkedEquivalenceClass<Integer>(c1);
-		_test2 = new LinkedEquivalenceClass<Integer>(c1);
-		_test3 = new LinkedEquivalenceClass<Integer>(c1);
+		_ec = new EquivalenceClasses<Integer>(c);
 	}
 
 
 
-
+/*
 	private void addElements(LinkedEquivalenceClass<Integer> t ,Integer x , Integer y , Integer z) {
 
 		t.demoteAndSetCanonical(x);
 		t.add(y);
 		t.add(z);
 	}
-
+*/
 
 
 	@Test
 	void testAdd() {
 
-		//add elements to the linked equivalence classes
-		addElements(_test1 , 2, 4, 6);
-		addElements(_test2 , 4, 8, 12);
-		addElements(_test3 , 6, 12 , 18);
-
 		//test with a null element
 		assertFalse(_ec.add(null));
 
 		//add an element
-		assertTrue(_ec.add(_test1));
+		assertTrue(_ec.add(2));
 
 		//check that it is contains within that
-		assertTrue(_ec.contains(_test1));
+		assertTrue(_ec.contains(2));
 
 		//add another element
-		assertTrue(_ec.add(_test2));
+		assertTrue(_ec.add(4));
 
 		//check that new element is contains
-		assertTrue(_ec.contains(_test2));
-		
+		assertTrue(_ec.contains(_4));
+
 		//add an element that already exists in the class
+		assertFalse(_ec.add(2));
 
 
 
@@ -162,7 +141,7 @@ class EquivalenceClassesTest {
 
 	@Test
 	void testIndexOfClasses() {
-		
+
 		_ec.add(_test1);
 		_ec.add(_test2);
 		assertEquals(0, _ec.indexOfClass(_test1));
@@ -182,8 +161,8 @@ class EquivalenceClassesTest {
 		addElements(_test2 , 4, 8, 12);
 		addElements(_test3 , 6, 12 , 18);
 		assertEquals("{2 | 4 6 }\n{4 | 8 12 }\n{6 | 12 18 }\n", _ec.toString());
-		
+
 	}
-	
+
 
 }

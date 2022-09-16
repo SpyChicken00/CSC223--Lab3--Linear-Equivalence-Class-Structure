@@ -202,8 +202,12 @@ class LinkedEquivalenceClassTest {
 	@Test
 	public void testAdd() {
 		
+		assertTrue(l.add(2));
+		
+		assertEquals(2 , l.canonical());
+		
 		//add an element to the canonical 
-		assertTrue(l.demoteAndSetCanonical(2));
+		//assertTrue(l.demoteAndSetCanonical(2));
 		
 		//add elements to the rest of the list
 		assertTrue(l.add(4));
@@ -217,6 +221,8 @@ class LinkedEquivalenceClassTest {
 		
 		//add an element that is null
 		assertFalse(l.add(null));
+		
+		//try add with an empty list to set the element to the canonical!!!
 		
 	}
 	

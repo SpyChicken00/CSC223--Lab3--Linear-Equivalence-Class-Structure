@@ -171,11 +171,18 @@ class EquivalenceClassesTest {
 
 	@Test
 	void testToString() {
-		_ec.add(_test1);
-		_ec.add(_test2);
-		//test that output is expected
-		System.out.println(_ec.toString());
+		assertTrue(_ec.add(_test1));
+		assertTrue(_ec.add(_test2));
 		assertEquals("{null | }\n{null | }\n", _ec.toString());
+		assertTrue(_ec.add(_test3));
+		assertEquals("{null | }\n{null | }\n{null | }\n", _ec.toString());
+		//add items to specific tests 
+		//add elements to the linker equivalence classes
+		addElements(_test1 , 2, 4, 6);
+		addElements(_test2 , 4, 8, 12);
+		addElements(_test3 , 6, 12 , 18);
+		assertEquals("{2 | 4 6 }\n{4 | 8 12 }\n{6 | 12 18 }\n", _ec.toString());
+		
 	}
 	
 

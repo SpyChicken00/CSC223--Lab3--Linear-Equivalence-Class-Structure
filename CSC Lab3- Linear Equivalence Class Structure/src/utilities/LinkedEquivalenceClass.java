@@ -1,9 +1,8 @@
 package utilities;
 import java.util.Comparator;
 /**
- * A LinkedEquivalence Class, determines if two objects
- * can be compared based on a specified criteria or something 
- * idk fix this later
+ * A LinkedEquivalence Class, determines if an object "belongs" 
+ * to a set based on a specified comparator
  * 
  * <p>Bugs: 
  * DemoteAndSetCanonical: When Initially setting the canonical, if the user incorrectly 

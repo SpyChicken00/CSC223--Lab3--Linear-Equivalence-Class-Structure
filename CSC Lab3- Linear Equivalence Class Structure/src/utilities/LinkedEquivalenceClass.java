@@ -88,6 +88,8 @@ public class LinkedEquivalenceClass<T> {
 		if (contains(element)) return false;
 		//check if item belongs before adding
 		if (!(belongs(element))) return false;
+		//check if list is empty and need to set canonical
+		if (isEmpty()) return demoteAndSetCanonical(element);
 		
 		//add element to back of linked list
 		_rest.addToBack(element);

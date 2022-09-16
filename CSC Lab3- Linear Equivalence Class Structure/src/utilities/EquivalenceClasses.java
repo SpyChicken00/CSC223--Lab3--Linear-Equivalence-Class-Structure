@@ -87,7 +87,6 @@ public class EquivalenceClasses<T> {
 	 * @return index of particular class
 	 */
 	protected int indexOfClass(T element) {
-		//TODO test
 		//check if element is null
 		if (element == null) return -1;
 		//index location of element

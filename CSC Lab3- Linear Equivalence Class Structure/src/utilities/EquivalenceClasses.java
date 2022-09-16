@@ -20,7 +20,7 @@ public class EquivalenceClasses<T> {
 
 	/**
 	 * Creates a new arraylist to store equivalence classes
-	 * @param comparator
+	 * @param comparator	
 	 */
 	public EquivalenceClasses(Comparator<T> comparator) {
 		_comparator = comparator;
@@ -36,25 +36,18 @@ public class EquivalenceClasses<T> {
 		//TODO
 		//check if element null
 		if (element == null) return false;
-		//check if class already contained
-		//TODO are the elements supposed to be unique or can have duplicates?
-		if (_classes.contains(element)) return false;
-		
-		//loop through classes and see if belongs to existing
-		for (LinkedEquivalenceClass<T> c:_classes) {
-			if (c.belongs(element)) {
-				c.add(element);
-				return true;
-			}
+		//find index element belongs to and add to that class
+		int index = indexOfClass(element);
+		if (!(index == -1)) {
+			_classes.get(index).add(element);
+			return true;
 		}
 		
-		//create a new equivalence class and set element as that classes canonical
+		//otherwise create a new equivalence class and set element as that classes canonical
 		LinkedEquivalenceClass<T> c = new LinkedEquivalenceClass<T>(_comparator);
 		c.demoteAndSetCanonical(element);
 		_classes.add(c);
 		return true;
-		//then add that class to our classes 
-		
 	}
 
 	/**
@@ -103,14 +96,13 @@ public class EquivalenceClasses<T> {
 	 * @param element
 	 * @return index of particular class
 	 */
-	//TODO clarify if element is an item or a equivalence class
 	protected int indexOfClass(T element) {
 		//check if element is null
 		if (element == null) return -1;
-		//index location of element
+		//index location element belongs to
 		for (int i = 0; i < _classes.size(); i++) {
 			//check if target is equal to current item
-			if (_classes.get(i).equals(element)) return i;
+			if (_classes.get(i).belongs(element)) return i;
 		}
 		//not contained
 		return -1;

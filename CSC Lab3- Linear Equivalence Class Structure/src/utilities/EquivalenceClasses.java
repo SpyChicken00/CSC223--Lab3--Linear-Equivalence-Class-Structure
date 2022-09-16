@@ -28,8 +28,7 @@ public class EquivalenceClasses<T> {
 	}
 
 	/**
-	 * Adds a new class to the arrayList,
-	 * Will not allow duplicate or null classes
+	 * Creates 
 	 * @param element
 	 * @return true if addition was successful
 	 */
@@ -38,12 +37,24 @@ public class EquivalenceClasses<T> {
 		//check if element null
 		if (element == null) return false;
 		//check if class already contained
+		//TODO are the elements supposed to be unique or can have duplicates?
 		if (_classes.contains(element)) return false;
 		
-		//add element equivalence class to the arrayList
-		//TODO how to add/cast type?
-		_classes.add((LinkedEquivalenceClass<T>) element);
+		//loop through classes and see if belongs to existing
+		for (LinkedEquivalenceClass<T> c:_classes) {
+			if (c.belongs(element)) {
+				c.add(element);
+				return true;
+			}
+		}
+		
+		//create a new equivalence class and set element as that classes canonical
+		LinkedEquivalenceClass<T> c = new LinkedEquivalenceClass<T>(_comparator);
+		c.demoteAndSetCanonical(element);
+		_classes.add(c);
 		return true;
+		//then add that class to our classes 
+		
 	}
 
 	/**
@@ -59,7 +70,7 @@ public class EquivalenceClasses<T> {
 		for (LinkedEquivalenceClass<T> c:_classes) {
 			if (c.contains(target)) return true;
 		}
-		
+		//item not contained
 		return false;
 	}
 	
@@ -69,8 +80,12 @@ public class EquivalenceClasses<T> {
 	 */
 	public int size() {
 		//TODO test
-		//check the size of the arraylist
-		return _classes.size();
+		//calculate # of items in all classes
+		int size = 0;
+		for (LinkedEquivalenceClass<T> c:_classes) {
+			size += c.size();
+		}
+		return size;
 	}
 
 	/**
@@ -88,6 +103,7 @@ public class EquivalenceClasses<T> {
 	 * @param element
 	 * @return index of particular class
 	 */
+	//TODO clarify if element is an item or a equivalence class
 	protected int indexOfClass(T element) {
 		//check if element is null
 		if (element == null) return -1;

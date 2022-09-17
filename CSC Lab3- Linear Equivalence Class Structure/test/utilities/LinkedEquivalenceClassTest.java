@@ -7,17 +7,37 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
+
+
+/**
+ * Runs Junit tests on the methods of Linked Equivalence Class class to ensure
+ * capability and works on a variety of test cases.
+ * @author Sally Stahl and Jace Rettig
+ * @version September 15, 2022
+ */
+
+
+
 class LinkedEquivalenceClassTest {
 	
 
+	/*
+	 * A test equivalence class that hold integers 
+	 */
 	LinkedEquivalenceClass<Integer> l; 
+	
+	/*
+	 * a comparator of integers that sees if the integer is even
+	 * or odd
+	 */
+	Comparator<Integer> c;
 
 			
 			
 	public LinkedEquivalenceClassTest() {
 		
 		
-		Comparator<Integer> c = new Comparator<Integer>() {
+		c = new Comparator<Integer>() {
 			// All even integers are 'equivalent' // All odd integers are 'equivalent'
 			public int compare(Integer x, Integer y) {
 				return x % 2 == y % 2 ? 0 : 1; }
@@ -26,6 +46,10 @@ class LinkedEquivalenceClassTest {
 			l = new LinkedEquivalenceClass<Integer>(c);	
 	}
 
+	
+	/*
+	 * a JUnit test that returns the canonical element
+	 */
 	@Test
 	void testCanonical() {
 		
@@ -65,6 +89,10 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
+	/*
+	 * a Junit test that check if the canonical and the 
+	 * rest of the list are empty
+	 */
 	@Test
 	void testisEmpty() {
 		//clear the list
@@ -100,6 +128,12 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
+	/*
+	 * a Junit test to check that the canonical
+	 * element and the rest of the list are cleared when the 
+	 * method is called
+	 * 
+	 */
 	
 	@Test
 	public void testClear() {
@@ -132,7 +166,10 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
-	
+	/*
+	 * A Junit test that check the the rest of the list,
+	 * and not the canonical element is cleared
+	 */
 	
 	@Test
 	public void testClearNonCanonical() {
@@ -161,6 +198,9 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
+	/*
+	 * a Junit test that check the size of the equivalence class
+	 */
 	
 	@Test
 	public void testSize() {
@@ -194,9 +234,13 @@ class LinkedEquivalenceClassTest {
 		//check the size again
 		assertEquals(0 , l.size());
 		
-		
-		
 	}
+	
+	
+	/*
+	 * a Junit test to check that the add method works and add elements to the 
+	 * equivalence class
+	 */
 	
 	@Test
 	public void testAdd() {
@@ -221,6 +265,10 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	
+	/* 
+	 * a jUnit test that ensures the contains method works
+	 */
 	
 	@Test
 	public void testContains() {
@@ -264,6 +312,13 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
+	/*
+	 * a Junit test that checks that the belong method
+	 * works and informs the user when an element doesn't belong
+	 * 
+	 */
+	
+	
 	@Test public void testBelongs() {
 		
 		//add a canonical element
@@ -292,7 +347,10 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
-	
+	/*
+	 * a jUnit test that ensures that an element is removed when the 
+	 * function is called
+	 */
 	
 	
 	@Test
@@ -343,7 +401,10 @@ class LinkedEquivalenceClassTest {
 	
 	
 	
-	
+	/*
+	 * a Junit test that check that the canonical
+	 * element is cleared when called
+	 */
 	
 	
 	@Test
@@ -387,7 +448,10 @@ class LinkedEquivalenceClassTest {
 	}
 	
 	
-	
+	/*
+	 * a JUnit test that ensures that the canonical element is added to 
+	 * the rest of the list and add the element from input as the canonical eleent
+	 */
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
@@ -420,11 +484,16 @@ class LinkedEquivalenceClassTest {
 		//try to add a canonical that is null
 		assertFalse(l.demoteAndSetCanonical(null));
 		
-		
-	
-		
+
 
 	}
+	
+	
+	
+	/*
+	 * a jUnit test that ensures the function of the method that will
+	 * turn the equivalence class to a string
+	 */
 	
 	@Test
 	public void testToString() {

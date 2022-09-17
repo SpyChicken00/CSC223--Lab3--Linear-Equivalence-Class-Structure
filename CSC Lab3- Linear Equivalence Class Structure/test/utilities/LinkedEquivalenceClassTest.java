@@ -28,7 +28,6 @@ class LinkedEquivalenceClassTest {
 
 	@Test
 	void testCanonical() {
-		//TODO- CHECK THAT THE NEW CANONICAL BELONGS
 		
 		
 		//clear the list
@@ -392,7 +391,6 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	public void testDemoteAndSetCanonical() {
-		//TODO CHECK THAT THE ELEMENT BEING SET TO THE CANONICAL BELONGS
 		
 		//clear the list
 		l.clear();

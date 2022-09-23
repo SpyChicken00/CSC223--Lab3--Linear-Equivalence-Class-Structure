@@ -308,7 +308,7 @@ class LinkedEquivalenceClassTest {
 		assertFalse(l.contains(2));
 		
 		//test on a null element
-		assertTrue(l.contains(null));
+		assertFalse(l.contains(null));
 		
 		
 	}

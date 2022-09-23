@@ -162,7 +162,6 @@ public class LinkedList <Item> {
 	 * @return True if empty
 	 */
 	public boolean isEmpty() {
-		//TODO works but why not working with head and tail
 		//if (_head._next == _tail) return true;
 		if (_size == 0) return true;
 		return false;

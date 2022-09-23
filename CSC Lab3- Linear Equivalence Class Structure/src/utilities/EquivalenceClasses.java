@@ -33,7 +33,6 @@ public class EquivalenceClasses<T> {
 	 * @return true if addition was successful
 	 */
 	public boolean add(T element) {
-		//TODO
 		//check if element null
 		if (element == null) return false;
 		//find index element belongs to and add to that class
@@ -56,7 +55,6 @@ public class EquivalenceClasses<T> {
 	 * @return True if containment
 	 */
 	public boolean contains(T target) {
-		//TODO test
 		//check if target is null
 		if (target == null) return false;
 		//check each class in classes and see if contains target
@@ -72,7 +70,6 @@ public class EquivalenceClasses<T> {
 	 * @return and integer 
 	 */
 	public int size() {
-		//TODO test
 		//calculate # of items in all classes
 		int size = 0;
 		for (LinkedEquivalenceClass<T> c:_classes) {

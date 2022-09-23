@@ -37,7 +37,7 @@ class EquivalenceClassesTest {
 		c = new Comparator<Integer>() {
 			// All even integers are 'equivalent' // All odd integers are 'equivalent'
 			public int compare(Integer x, Integer y) {
-				return x % 2 == y % 2 ? 0 : 1; }
+				return x * 5 % 2 == y * 5 % 2 ? 0 : 1; }
 		};
 
 		_ec = new EquivalenceClasses<Integer>(c);

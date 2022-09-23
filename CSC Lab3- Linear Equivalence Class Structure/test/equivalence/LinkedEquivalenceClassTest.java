@@ -1,4 +1,4 @@
-package utilities;
+package equivalence;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
+
+import equivalence.LinkedEquivalenceClass;
 
 
 

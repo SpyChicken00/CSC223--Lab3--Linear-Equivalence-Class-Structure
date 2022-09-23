@@ -1,4 +1,4 @@
-package utilities;
+package equivalence;
 import java.util.Comparator;
 /**
  * A LinkedEquivalence Class, determines if an object "belongs" 

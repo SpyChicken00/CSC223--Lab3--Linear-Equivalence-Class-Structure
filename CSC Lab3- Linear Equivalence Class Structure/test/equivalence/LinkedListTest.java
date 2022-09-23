@@ -1,8 +1,10 @@
-package utilities;
+package equivalence;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import equivalence.LinkedList;
 
 class LinkedListTest {
 	private LinkedList<String> l;

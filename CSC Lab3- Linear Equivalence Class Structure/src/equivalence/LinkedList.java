@@ -1,4 +1,4 @@
-package utilities;
+package equivalence;
 
 /**
 * A singly linked list...yay...
